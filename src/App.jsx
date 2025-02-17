@@ -1,10 +1,16 @@
+import { Routes, Route } from "react-router";
 import SignInPromptBox from "./components/SignInPromptBox";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (
     <>
-    <h1>Hello world!</h1>;
-    <SignInPromptBox />
+    <h3>Welcome to the insurance CRM portal!</h3>
+    
+    <Routes>
+      <Route path='/' element={<SignInPromptBox />}/>
+      <Route path='/sign-up' element={<SignUp />}/>
+    </Routes>
     </>
 )};
 
