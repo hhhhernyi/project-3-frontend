@@ -21,7 +21,7 @@ const handleInputChange = (e) => {
     setInputDetails({...inputDetails, [name]: value });
 }
 console.log(inputDetails)
-
+// needs to check for validation, if input details !== db, send error, else navigate()
 return (
     <div>
       <form onSubmit={handleSubmit}>
