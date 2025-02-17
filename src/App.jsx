@@ -9,7 +9,7 @@ import Profile from './pages/Profile';
 const App = () => {
   return (
     <>
-      <h3>Welcome to the insurance CRM portal!</h3>
+      <h3 className="welcomeText">Welcome to the insurance CRM portal!</h3>
       
       <Routes>
         <Route path='/' element={<SignInPromptBox />} />

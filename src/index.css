@@ -53,11 +53,39 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+#root {
+  width: 100vw;
+}
+.welcomeText {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  border: solid black;
+  border-radius: 5px;
+}
+
 .signUpPage{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.signUpFormLabel{
+  font-size: 3vw;
+}
+.signUpPageInput{
+   margin: 20px;
+}
+
+/* MEDIA QUERIES FOR BIG SCREENS */
+@media only screen and (min-width: 768px) {
+  .welcomeText{
+    max-width: 500px;
+  }
+  .signUpFormLabel{
+    font-size: 15px;
+  }
+
 }
 
 @media (prefers-color-scheme: light) {
