@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router";
-import SignInPromptBox from "./components/SignInPromptBox";
+import SignInPromptBox from "./components/SignInPromptBox/SignInPromptBox";
 import SignUp from "./pages/SignUp";
 
 const App = () => {
