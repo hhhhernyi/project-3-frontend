@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ClientForm = () => {
   
@@ -11,6 +12,8 @@ const ClientForm = () => {
     existingProducts: '',
     productsToSell: ''
   });
+
+  const navigate = useNavigate();
 
   const [error, setError] = useState('');
   const handleChange = (e) => {
@@ -59,8 +62,9 @@ const ClientForm = () => {
   return (
     <div>
         <h2>Create New Client</h2>
-        <form onSubmit={handleSubmit}></form>
-    
+        <form onSubmit={handleSubmit}>
+
+        <div>
         <label>Name:</label>
         <input
         type="text"
@@ -68,7 +72,9 @@ const ClientForm = () => {
         value={form.name}
         onChange={handleChange}
         />
+        </div>
 
+        <div>
         <label>Handphone Number</label>
         <input
         type="Number"
@@ -76,7 +82,9 @@ const ClientForm = () => {
         value={form.handphoneNumber}
         onChange={handleChange}
         />
+        </div>
 
+        <div>
         <label>Priority:</label>
         <select
             name="priority"
@@ -86,7 +94,9 @@ const ClientForm = () => {
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
             </select>
+        </div>
 
+        <div>
         <label>Comments:</label>
         <input
             type="text"
@@ -94,7 +104,9 @@ const ClientForm = () => {
             value={form.comment}
             onChange={handleChange}
             />
+        </div>
 
+        {/* <div>
         <label>Agent ID:</label>
         <input
             type="text"
@@ -102,7 +114,9 @@ const ClientForm = () => {
             value={form.agent}
             onChange={handleChange}
             />
+        </div> */}
 
+        <div>
         <label>Existing Products:</label>
         <input
             type="text"
@@ -110,7 +124,9 @@ const ClientForm = () => {
             value={form.existingProducts}
             onChange={handleChange}
             />
+        </div>
 
+        <div>
          <label>Products to sell:</label>
         <input
             type="text"
@@ -118,7 +134,14 @@ const ClientForm = () => {
             value={form.productsToSell}
             onChange={handleChange}
             />
-
+        </div>
+        <div>
+        <button type="submit">Add Client</button>
+        </div>
+        <div>
+        <button onClick={() => navigate('/clients')}>Back to Client Page</button>
+        </div>
+        </form>
         </div>
 
   )
