@@ -76,6 +76,28 @@ button:focus-visible {
 .signUpPageInput{
    margin: 20px;
 }
+.clientListPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fullClientList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.clientListCard {
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  width: 130px;
+  height: 55px;
+  overflow: hidden;
+}
+.priorityText{
+  font-size: 10px;
+}
 
 /* MEDIA QUERIES FOR BIG SCREENS */
 @media only screen and (min-width: 768px) {
@@ -84,6 +106,9 @@ button:focus-visible {
   }
   .signUpFormLabel{
     font-size: 15px;
+  }
+  .priorityText{
+    font-size: 0.8vw;;
   }
 
 }
