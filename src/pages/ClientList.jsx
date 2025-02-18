@@ -14,9 +14,10 @@ export default function ClientList () {
     'Low': '#baffc9'
   }
 
+ 
   useEffect(()=>{
     async function getClients() {
-      const clientData = await clientService.index()
+      const clientData = await clientService.indexClient()
       setClientList(clientData)
     }
     getClients();

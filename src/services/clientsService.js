@@ -1,6 +1,8 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/clients`;
 
-async function index() {
+
+// view all clients
+async function indexClient() {
     try {
         const res = await fetch(BASE_URL, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
@@ -11,6 +13,38 @@ async function index() {
     }
 }
 
+// create a new client
+async function createClient(clientFormData) {
+    try {
+        const res = await fetch(BASE_URL, {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(clientFormData),
+          });
+          return  res.json();
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+// show a single client
+async function showClient(clientId) {
+    try {
+        const res = await fetch(`${BASE_URL}/${clientId}`, {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          })
+          return res.json()
+
+    } catch (err) {
+        console.log(err)
+    }
+    
+}
+
 export {
-   index
+    indexClient,
+   createClient,
+   showClient
   };
