@@ -23,7 +23,11 @@ export default function ClientList () {
   },[])
     return <div className='clientListPage'>
       <h2>Here is your list of clients</h2>
-      <Button variant="outlined"><Link to='/clients/new' >Create a new client</Link></Button>
+      <div className='clientListPageButtons'>
+        <Button variant="outlined" ><Link to='/home' >Back to Home</Link></Button>
+        <Button variant="outlined" ><Link to='/clients/new' >Create a new client</Link></Button>
+      </div>
+      
       <div className='fullClientList'>
          {clientList.map((item)=>(
        <Link key={item._id} to={`/clients/${item._id}`} ><ClientCard name={item.name} priority={item.priority} style={priorityColors[`${item.priority}`]}/></Link>

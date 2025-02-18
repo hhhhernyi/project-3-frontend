@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import ClientList from './pages/ClientList'; 
 import Product from './pages/Product'; 
 import Profile from './pages/Profile'; 
+import ClientForm from "./components/ClientForm";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/home' element={<HomePage />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/clients' element={<ClientList />} /> 
+        <Route path='/clients/new' element={<ClientForm />}/>
         <Route path='/product' element={<Product />} /> 
         <Route path='/profile' element={<Profile />} /> 
       </Routes>
