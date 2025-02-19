@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
+
 const ClientForm = () => {
   
   const [form, setForm] = useState({
     name: '',
     handphoneNumber: '',
     priority: '',
-    comments: ''
+    comments: '',
+    // agent:'',
   });
 
   const navigate = useNavigate();
@@ -23,7 +25,11 @@ const ClientForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form)
+    if (!form.name || !form.handphoneNumber) {
+      setError("Please fill in all required fields.");
+      return; // Don't proceed with the fetch request if validation fails
+    }
+    console.log(form);
 
     try {
       const response = await fetch('http://localhost:3000/clients', {
@@ -43,11 +49,15 @@ const ClientForm = () => {
           handphoneNumber: '',
           priority: 'High',
           comments: '',
+        //   agent:'',
 
         //   existingProducts: '',
         //   productsToSell: ''
         });
-      } else {
+      } 
+   
+      
+      else {
         const data = await response.json();
         console.log(data);
         setError(data.message || 'An error occurred while adding the client');
@@ -100,13 +110,13 @@ const ClientForm = () => {
         <label>Comments:</label>
         <input
             type="text"
-            name="Comments"
-            value={form.Comments}
+            name="comments"
+            value={form.comments}
             onChange={handleChange}
             />
         </div>
 
-        <div>
+        {/* <div>
         <label>Agent ID:</label>
         <input
             type="text"
@@ -114,9 +124,9 @@ const ClientForm = () => {
             value={form.agent}
             onChange={handleChange}
             />
-        </div> */}
+        </div>  */}
 
-        <div>
+        {/* <div>
         <label>Existing Products:</label>
         <input
             type="text"
@@ -124,9 +134,9 @@ const ClientForm = () => {
             value={form.existingProducts}
             onChange={handleChange}
             />
-        </div>
+        </div> */}
 
-        <div>
+        {/* <div>
          <label>Products to sell:</label>
         <input
             type="text"
@@ -134,7 +144,7 @@ const ClientForm = () => {
             value={form.productsToSell}
             onChange={handleChange}
             />
-        </div>
+        </div> */}
         <div>
         <button type="submit">Add Client</button>
         </div>
