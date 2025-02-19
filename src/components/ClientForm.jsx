@@ -30,6 +30,7 @@ const ClientForm = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(form), // Send the form state as the request body
       });
@@ -42,12 +43,13 @@ const ClientForm = () => {
           handphoneNumber: '',
           priority: 'High',
           comments: '',
-          agent: '',
-          existingProducts: '',
-          productsToSell: ''
+
+        //   existingProducts: '',
+        //   productsToSell: ''
         });
       } else {
         const data = await response.json();
+        console.log(data);
         setError(data.message || 'An error occurred while adding the client');
       }
     } catch (err) {
@@ -98,13 +100,13 @@ const ClientForm = () => {
         <label>Comments:</label>
         <input
             type="text"
-            name="comments"
-            value={form.comment}
+            name="Comments"
+            value={form.Comments}
             onChange={handleChange}
             />
         </div>
 
-        {/* <div>
+        <div>
         <label>Agent ID:</label>
         <input
             type="text"
@@ -113,7 +115,26 @@ const ClientForm = () => {
             onChange={handleChange}
             />
         </div> */}
-        
+
+        <div>
+        <label>Existing Products:</label>
+        <input
+            type="text"
+            name="existingProducts"
+            value={form.existingProducts}
+            onChange={handleChange}
+            />
+        </div>
+
+        <div>
+         <label>Products to sell:</label>
+        <input
+            type="text"
+            name="productsToSell"
+            value={form.productsToSell}
+            onChange={handleChange}
+            />
+        </div>
         <div>
         <button type="submit">Add Client</button>
         </div>
