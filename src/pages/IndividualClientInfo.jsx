@@ -6,7 +6,7 @@ import * as clientService from '../services/clientsService';
 const IndividualClientInfo = () =>{
 
     const { clientId } = useParams();
-    const [client, setClient] = useState(null);
+    const [client, setClient] = useState({});
 
     useEffect(() => {
         async function fetchClientDetails() {
