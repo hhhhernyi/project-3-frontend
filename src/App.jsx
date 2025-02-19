@@ -3,7 +3,7 @@ import SignInPromptBox from "./components/SignInPromptBox/SignInPromptBox";
 import SignUp from "./pages/SignUp";
 import HomePage from './pages/HomePage';
 import ClientList from './pages/ClientList'; 
-import Product from './pages/Product'; 
+import ProductList from './pages/ProductList'; 
 import Profile from './pages/Profile'; 
 import ClientForm from "./components/ClientForm";
 import IndividualClientInfo from "./pages/IndividualClientInfo";
@@ -22,9 +22,7 @@ const App = () => {
         <Route path='/clients' element={<ClientList />} /> 
         <Route path='/clients/new' element={<ClientForm />}/>
         <Route path='/clients/:clientId' element={<IndividualClientInfo />}/>
-        <Route path='/clients/:clientId/edit' element={<EditClientPage />}/>
-        <Route path='/product' element={<Product />} />
-        <Route path='/product/new' element={<NewProducts />} /> 
+        <Route path='/product' element={<ProductList />} /> 
         <Route path='/profile' element={<Profile />} /> 
       </Routes>
     </>
