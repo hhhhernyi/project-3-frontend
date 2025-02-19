@@ -19,6 +19,9 @@ const IndividualClientInfo = () =>{
             console.log(err)
         }
     }
+    function handleEditClient() {
+        navigate(`/clients/${clientId}/edit`)
+    }
 
     useEffect(() => {
         async function fetchClientDetails() {
@@ -33,7 +36,7 @@ const IndividualClientInfo = () =>{
             }
         } 
         fetchClientDetails();
-    }, []);
+    }, [clientId]);
 
     
 
@@ -42,13 +45,15 @@ const IndividualClientInfo = () =>{
         <div><h3>Client Details</h3></div>
         <div>
             Name: {client.name}
-            Contact Number: {client.phone}
+            Contact Number: {client.handphoneNumber}
             Priority: {client.priority}
             Comments: {client.comments}
             Agent ID: 
             Existing Products: 
             Pipeline:
             <Button className='deleteClient' variant="outlined" onClick={handleDeleteClient} type='delete'>Delete</Button>
+            <Button className='editClient' variant="outlined" onClick={handleEditClient} >Edit</Button>
+            
         </div>
         </>
         )
