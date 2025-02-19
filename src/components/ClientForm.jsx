@@ -101,7 +101,7 @@ const ClientForm = () => {
     value={form.priority}
     onChange={handleChange}
   >
-    <option value="">Select Priority</option> {/* Blank option */}
+    <option value="" disabled selected>Select Priority</option> {/* Blank option */}
     <option value="High">High</option>
     <option value="Medium">Medium</option>
     <option value="Low">Low</option>
