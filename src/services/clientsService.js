@@ -42,9 +42,29 @@ async function showClient(clientId) {
     }
     
 }
+// delete client
+async function deleteClient(clientId) {
+    try {
+        const res = await fetch(`${BASE_URL}/${clientId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+             Authorization: `Bearer ${localStorage.getItem('token')}` 
+           
+          },
+        });
+    
+      return res.json()
+
+      } catch (err) {
+        console.error(err)
+        
+      }
+    };
 
 export {
     indexClient,
    createClient,
-   showClient
+   showClient,
+   deleteClient
   };
