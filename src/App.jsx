@@ -6,6 +6,7 @@ import ClientList from './pages/ClientList';
 import Product from './pages/Product'; 
 import Profile from './pages/Profile'; 
 import ClientForm from "./components/ClientForm";
+import IndividualClientInfo from "./pages/IndividualClientInfo";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/clients' element={<ClientList />} /> 
         <Route path='/clients/new' element={<ClientForm />}/>
+        <Route path='/clients/:clientId' element={<IndividualClientInfo />}/>
         <Route path='/product' element={<Product />} /> 
         <Route path='/profile' element={<Profile />} /> 
       </Routes>

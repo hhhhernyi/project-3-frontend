@@ -11,7 +11,8 @@ const IndividualClientInfo = () =>{
     useEffect(() => {
         async function fetchClientDetails() {
             try {
-                const clientData = await clientService.getClientById(clientId);
+                // should be using .showClient() instead of .getClientById() , inside of ClientService got no function called .getClientById()
+                const clientData = await clientService.showClient(clientId);
 
                 setClient(clientData);
             } catch (error){
@@ -19,7 +20,7 @@ const IndividualClientInfo = () =>{
             }
         } 
         fetchClientDetails();
-    }, [clientId]);
+    }, []);
 
     
 
