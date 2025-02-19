@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const ClientForm = () => {
   
   const [form, setForm] = useState({
     name: '',
     handphoneNumber: '',
-    priority: 'High',
-    comments: '',
-    agent: '',
-    existingProducts: '',
-    productsToSell: ''
+    priority: '',
+    comments: ''
   });
 
   const navigate = useNavigate();
@@ -26,6 +23,7 @@ const ClientForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(form)
 
     try {
       const response = await fetch('http://localhost:3000/clients', {
@@ -77,7 +75,7 @@ const ClientForm = () => {
         <div>
         <label>Handphone Number</label>
         <input
-        type="Number"
+        type="text"
         name="handphoneNumber"
         value={form.handphoneNumber}
         onChange={handleChange}
@@ -115,26 +113,7 @@ const ClientForm = () => {
             onChange={handleChange}
             />
         </div> */}
-
-        <div>
-        <label>Existing Products:</label>
-        <input
-            type="text"
-            name="existingProducts"
-            value={form.existingProducts}
-            onChange={handleChange}
-            />
-        </div>
-
-        <div>
-         <label>Products to sell:</label>
-        <input
-            type="text"
-            name="productsToSell"
-            value={form.productsToSell}
-            onChange={handleChange}
-            />
-        </div>
+        
         <div>
         <button type="submit">Add Client</button>
         </div>
