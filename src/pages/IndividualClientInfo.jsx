@@ -23,6 +23,10 @@ const IndividualClientInfo = () =>{
         navigate(`/clients/${clientId}/edit`)
     }
 
+    function handleClick() {
+        navigate(`/clients`)
+    }
+
     useEffect(() => {
         async function fetchClientDetails() {
             try {
@@ -53,6 +57,7 @@ const IndividualClientInfo = () =>{
             Pipeline:
             <Button className='deleteClient' variant="outlined" onClick={handleDeleteClient} type='delete'>Delete</Button>
             <Button className='editClient' variant="outlined" onClick={handleEditClient} >Edit</Button>
+            <Button variant="outlined" type='submit' onClick={handleClick}>Go back</Button>
             
         </div>
         </>
