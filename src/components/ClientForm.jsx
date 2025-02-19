@@ -95,16 +95,18 @@ const ClientForm = () => {
         </div>
 
         <div>
-        <label>Priority:</label>
-        <select
-            name="priority"
-            value={form.priority}
-            onChange={handleChange}>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-            </select>
-        </div>
+  <label>Priority:</label>
+  <select
+    name="priority"
+    value={form.priority}
+    onChange={handleChange}
+  >
+    <option value="">Select Priority</option> {/* Blank option */}
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+</div>
 
         <div>
         <label>Comments:</label>
