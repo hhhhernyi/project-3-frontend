@@ -1,7 +1,7 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/products`;
 
 
-// view all clients
+// view all products
 async function indexProduct() {
     try {
         const res = await fetch(BASE_URL, {
@@ -13,7 +13,7 @@ async function indexProduct() {
     }
 }
 
-// create a new client
+// create a new product
 async function createProduct(productFormData) {
     try {
         const res = await fetch(BASE_URL, {
@@ -29,7 +29,7 @@ async function createProduct(productFormData) {
     }
 }
 
-// show a single client
+// show a single product
 async function showProduct(productId) {
     try {
         const res = await fetch(`${BASE_URL}/${productId}`, {

@@ -1,16 +1,24 @@
 import { useState } from "react"
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router";
+import * as productService from '../services/productService'
 
 export default function NewProducts() {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name:'',
         company:'',
         category:'',
         link:''
     })
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault()
         console.log(formData)
+        const newProduct = await productService.createProduct(formData)
+        console.log('new product: ', newProduct)
+    } 
+    function handleClick() {
+        navigate('/product')
     }
     function handleChange(event) {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -38,7 +46,8 @@ export default function NewProducts() {
             <label htmlFor="link">link</label>
             <input id='link' onChange={handleChange} name='link'></input>
 
-            <Button className='signUpPageButton' variant="outlined" type='submit'>Create Product!</Button>
+            <Button onClick={handleClick} variant="outlined" type='submit'>Create Product!</Button>
+            <Button onClick={handleClick} variant="outlined" >Back to all products</Button>
 
         </form>
 
