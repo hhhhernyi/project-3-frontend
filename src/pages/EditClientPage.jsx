@@ -4,6 +4,7 @@ import * as clientService from '../services/clientsService'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from "react-router";
+import ResponsiveAppBar from "../components/Navbar";
 
 export default function EditClientPage () {
     const navigate = useNavigate()
@@ -41,6 +42,7 @@ export default function EditClientPage () {
 
   return (
     <div>
+        <ResponsiveAppBar/>
         <p>Edit details for {formData.name}</p>
         <form onSubmit={handleSubmit}>
             <div>

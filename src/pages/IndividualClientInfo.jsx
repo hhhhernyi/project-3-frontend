@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import { useParams, useNavigate } from 'react-router';
 import * as clientService from '../services/clientsService';
+import ResponsiveAppBar from '../components/Navbar';
 
 
 const IndividualClientInfo = () =>{
@@ -50,6 +51,7 @@ const IndividualClientInfo = () =>{
 
     return (
         <>
+        <ResponsiveAppBar/>
         <div><h3>Client Details</h3></div>
         <div>
             Name: {client.name}

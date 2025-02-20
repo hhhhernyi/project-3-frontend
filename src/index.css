@@ -57,6 +57,32 @@ button:focus-visible {
   width: 100vw;
   height: 100vh;
 }
+.signInPage {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+}
+.logoImage{
+  width: 70vw;
+  max-width: 500px;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+.signInTextFields{
+  margin-bottom: 10px;
+}
+.usernameLogin {
+  margin: 10px;
+}
+.passwordLogin {
+  margin: 10px;
+}
+.signInPageButtons{
+  display: flex;
+  justify-content: space-around;
+}
 .welcomeText {
   margin: auto;
   margin-top: 20px;
@@ -68,13 +94,21 @@ button:focus-visible {
 }
 
 .signUpPage{
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.signUpForm{
+  display: flex;
+  flex-direction: column;
+}
 .signUpFormLabel{
+  display: inline-block;
   font-size: 3vw;
+  text-align: center;
+  width: 130px
 }
 .signUpPageInput{
    margin: 20px;

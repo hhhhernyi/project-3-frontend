@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import ResponsiveAppBar from './Navbar';
 
 
 const ClientForm = () => {
@@ -71,6 +72,7 @@ const ClientForm = () => {
 
   return (
     <div>
+      <ResponsiveAppBar/>
         <h2>Create New Client</h2>
         <form onSubmit={handleSubmit}>
 

@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import { useParams, useNavigate } from 'react-router';
 import * as clientService from '../services/clientsService';
 import * as productService from '../services/productService'
+import ResponsiveAppBar from '../components/Navbar';
 
 
 const AddNewProductsPage = () =>{
@@ -45,6 +46,7 @@ const AddNewProductsPage = () =>{
 
     return (
         <>
+        <ResponsiveAppBar/>
         <div><h3>Add a new product for {client.name}</h3></div>
         <div>
             Name: {client.name}<br/>

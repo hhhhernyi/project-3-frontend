@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import * as productService from "../services/productService";
 import Button from "@mui/material/Button";
+import ResponsiveAppBar from "../components/Navbar";
 
 const IndividualProductInfo = () => {
   const [product, setProduct] = useState({});
@@ -40,6 +41,7 @@ const IndividualProductInfo = () => {
 
   return (
     <>
+    <ResponsiveAppBar/>
       <div>
         Name: {product.name}
         Company: {product.company}

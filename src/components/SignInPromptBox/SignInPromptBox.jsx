@@ -3,10 +3,10 @@ import { TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { UserContext } from "../../Contexts/UserContext";
-import * as authService from '../../services/authService'
+import * as authService from "../../services/authService";
 
 const SignInPromptBox = () => {
-  const {setUser } = useContext(UserContext)
+  const { setUser } = useContext(UserContext);
   const [inputDetails, setInputDetails] = useState({
     username: "",
     password: "",
@@ -22,12 +22,12 @@ const SignInPromptBox = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log('login details: ',inputDetails)
-      const signedInUser = await authService.signIn(inputDetails)
-      setUser(signedInUser)
-      navigate('/home')
+      console.log("login details: ", inputDetails);
+      const signedInUser = await authService.signIn(inputDetails);
+      setUser(signedInUser);
+      navigate("/home");
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
     setInputDetails({
       username: "",
@@ -51,28 +51,35 @@ const SignInPromptBox = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <TextField
-          id="usernameLogin"
-          name="username"
-          label="Username:"
-          variant="outlined"
-          value={inputDetails.username}
-          onChange={handleInputChange}
-        />
-        <TextField
-          id="passwordLogin"
-          name="password"
-          label="Password:"
-          variant="outlined"
-          value={inputDetails.password}
-          onChange={handleInputChange}
-        />
-        <br />
-        <Button variant="contained" type="submit">Submit</Button>
+        <div className="signInTextFields">
+          <div className="usernameLogin">
+          <TextField
+            id="usernameLogin"
+            name="username"
+            label="Username:"
+            variant="outlined"
+            value={inputDetails.username}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="passwordLogin">
+          <TextField
+            id="passwordLogin"
+            name="password"
+            label="Password:"
+            variant="outlined"
+            value={inputDetails.password}
+            onChange={handleInputChange}
+          />
+        </div>
+        </div>
+        
+
+        <div className="signInPageButtons">
+          <Button variant="contained" type="submit">Sign In</Button>
+          <Button variant="contained" onClick={navigateToSignUp}>Sign-up</Button>
+        </div>
       </form>
-      <Button variant="contained" onClick={navigateToSignUp}>
-        Sign-up
-      </Button>
     </div>
   );
 };

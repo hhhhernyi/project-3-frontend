@@ -2,6 +2,7 @@ import { useState } from "react"
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router";
 import * as productService from '../services/productService'
+import ResponsiveAppBar from "../components/Navbar";
 
 export default function NewProducts() {
     const navigate = useNavigate()
@@ -25,6 +26,7 @@ export default function NewProducts() {
     }
     return (
         <>
+        <ResponsiveAppBar/>
         <h1>create a new product</h1>
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">name: </label>

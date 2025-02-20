@@ -7,6 +7,7 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react';
 import * as productService from '../services/productService';
+import ResponsiveAppBar from '../components/Navbar';
 
 const ProductList = () => {
   const [product, setProduct] = useState([]);
@@ -30,6 +31,7 @@ const ProductList = () => {
 
   return (
     <div>
+      <ResponsiveAppBar />
       <h2>Our List of Products</h2>
 
       <div className='clientListPageButtons'>

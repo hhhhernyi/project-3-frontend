@@ -11,35 +11,24 @@ import IndividualClientInfo from "./pages/IndividualClientInfo";
 import NewProducts from "./pages/NewProduct";
 import EditClientPage from "./pages/EditClientPage";
 import AddNewProductsPage from "./pages/AddNewProductToClient";
-import ResponsiveAppBar from "./components/Navbar";
-// import { UserContext } from "./Contexts/UserContext";
-// import { useContext } from "react";
-// import EditProductPage from "./pages/EditProductPage";
+import SignInPage from "./pages/SignIn";
 
 
 const App = () => {
-
-  // const { isLoggedIn } = useContext(UserContext)
-
   return (
     <>
-      
-      
-      {/* {isLoggedIn && <ResponsiveAppBar />} */}
-        <ResponsiveAppBar/>
       <Routes>
-        <Route path='/' element={<SignInPromptBox />} />
+        <Route path='/' element={<SignInPage />} />
         <Route path='/home' element={<HomePage />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/clients' element={<ClientList />} /> 
         <Route path='/clients/new' element={<ClientForm />}/>
-        <Route path='/clients/:clientId/edit' element={<EditClientPage />}/>
         <Route path='/clients/:clientId' element={<IndividualClientInfo />}/>
+        <Route path='/clients/:clientId/edit' element={<EditClientPage />}/>
         <Route path='/clients/:clientId/product' element={<AddNewProductsPage />}/>
-        <Route path='/products/new' element={<NewProducts />} /> 
-        {/* <Route path='/products/:productId/edit' element={<EditProductPage />}/> */}
-        <Route path='/products/:productId' element={<IndividualProductInfo />}/>
         <Route path='/products' element={<ProductList />} /> 
+        <Route path='/products/new' element={<NewProducts />} /> 
+        <Route path='/products/:productId' element={<IndividualProductInfo />}/>
         <Route path='/profile' element={<Profile />} /> 
       </Routes>
     </>

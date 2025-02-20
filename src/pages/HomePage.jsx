@@ -4,11 +4,13 @@ import { Gauge } from "@mui/x-charts";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import ResponsiveAppBar from "../components/Navbar";
 
 const HomePage = () => {
   const { user } = useContext(UserContext);
   return (
     <div className="HomePage">
+      <ResponsiveAppBar />
       <h1 className="welcomeText">Welcome {user.username}</h1>
       <p className="atAGlance">At a glance</p>
       <div className="overview">
