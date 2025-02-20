@@ -62,6 +62,7 @@ async function deleteClient(clientId) {
       }
     };
 
+    //update client
     async function updateClient(clientId, formData) {
         try {
             const res = await fetch(`${BASE_URL}/${clientId}`, {
@@ -75,6 +76,21 @@ async function deleteClient(clientId) {
         } catch (err) {
             console.log(err);
         }
+    }
+
+    // add product to client
+    async function assignProductToClient(clientId,productId) {
+        try {
+            const res = await fetch(`${BASE_URL}/${clientId}/product/${productId}`, {
+                method: 'POST',
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+             }
+              });
+              return  res.json();
+        } catch (err) {
+            console.log(err);
+        }
 
     }
 
@@ -83,5 +99,6 @@ export {
    createClient,
    showClient,
    deleteClient,
-   updateClient
+   updateClient,
+   assignProductToClient
   };

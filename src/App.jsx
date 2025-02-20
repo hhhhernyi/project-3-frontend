@@ -10,6 +10,7 @@ import ClientForm from "./components/ClientForm";
 import IndividualClientInfo from "./pages/IndividualClientInfo";
 import NewProducts from "./pages/NewProduct";
 import EditClientPage from "./pages/EditClientPage";
+import AddNewProductsPage from "./pages/AddNewProductToClient";
 // import EditProductPage from "./pages/EditProductPage";
 
 
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/clients/new' element={<ClientForm />}/>
         <Route path='/clients/:clientId/edit' element={<EditClientPage />}/>
         <Route path='/clients/:clientId' element={<IndividualClientInfo />}/>
+        <Route path='/clients/:clientId/product' element={<AddNewProductsPage />}/>
         <Route path='/products/new' element={<NewProducts />} /> 
         {/* <Route path='/products/:productId/edit' element={<EditProductPage />}/> */}
         <Route path='/products/:productId' element={<IndividualProductInfo />}/>

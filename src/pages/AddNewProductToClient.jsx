@@ -2,42 +2,37 @@ import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import { useParams, useNavigate } from 'react-router';
 import * as clientService from '../services/clientsService';
+import * as productService from '../services/productService'
 
 
-const IndividualClientInfo = () =>{
+const AddNewProductsPage = () =>{
 
     const navigate = useNavigate()
     const { clientId } = useParams();
     const [client, setClient] = useState({});
+    const [allProducts, setAllProducts]= useState([])
     const [clientProductsToSell, setClientProductsToSell] = useState([])
 
-    const handleDeleteClient = async () => {
-        try {
-            await clientService.deleteClient(clientId);
-            navigate('/clients');
-        } catch (err){
-            console.log(err)
-        }
-    }
-    function handleEditClient() {
-        navigate(`/clients/${clientId}/edit`)
+    async function handleAddToClient(productId){
+        console.log('added this to client: ',productId)
+        const updatedClient = await clientService.assignProductToClient(clientId,productId)
+        console.log('updatedClient: ',updatedClient)
+        // fire off a service and send a request to backend
+        navigate(`/clients/${clientId}`)
     }
 
     function handleClick() {
         navigate(`/clients`)
     }
-    function handleAddNewProducts(){
-        navigate(`/clients/${clientId}/product`)
-    }
 
     useEffect(() => {
         async function fetchClientDetails() {
             try {
-                // should be using .showClient() instead of .getClientById() , inside of ClientService got no function called .getClientById()
                 const clientData = await clientService.showClient(clientId);
-
+                const productData = await productService.indexProduct()
                 setClient(clientData);
                 setClientProductsToSell(clientData.productsToSell)
+                setAllProducts(productData)
                 console.log('client info: ',clientData)
             } catch (error){
                 console.error("Failed to fetch client details:", error);
@@ -50,34 +45,33 @@ const IndividualClientInfo = () =>{
 
     return (
         <>
-        <div><h3>Client Details</h3></div>
+        <div><h3>Add a new product for {client.name}</h3></div>
         <div>
-            Name: {client.name}
-            Contact Number: {client.handphoneNumber}
-            Priority: {client.priority}
-            Comments: {client.comments}
-            Agent ID: 
-            Existing Products: 
+            Name: {client.name}<br/>
+            Contact Number: {client.handphoneNumber}<br/>
+            Priority: {client.priority}<br/>
+            Comments: {client.comments}<br/>
             Pipeline: 
             {clientProductsToSell.length===0? <p>No Products Found</p>: null }
             {clientProductsToSell.map((product)=>(
                 <p key={product._id}>{product.name}, {product.company}</p>
             ))}
             
-            {/* .map((product)=>(
-                <p key={product._id}>{product.name}</p>
-            ))} */}
-            <Button className='deleteClient' variant="outlined" onClick={handleDeleteClient} type='delete'>Delete</Button>
-            <Button className='editClient' variant="outlined" onClick={handleEditClient} >Edit</Button>
+            Available Products:
+            <ol>
+                {allProducts.map((product)=>(
+                    <li key={product._id}>{product.name} <button onClick={()=>handleAddToClient(product._id)}>add to client list</button></li>
+                ))}
+
+            </ol>
             <Button variant="outlined" type='submit' onClick={handleClick}>Go back</Button>
-            <Button variant="outlined" type='submit' onClick={handleAddNewProducts}>Add New Products</Button>
             
         </div>
         </>
         )
 }
 
-export default IndividualClientInfo;
+export default AddNewProductsPage;
 
 
 //button to go back
