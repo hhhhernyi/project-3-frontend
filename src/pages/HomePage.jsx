@@ -9,7 +9,6 @@ const HomePage = () => {
   const { user } = useContext(UserContext);
   return (
     <div className="HomePage">
-      
       <h1 className="welcomeText">Welcome {user.username}</h1>
       <p className="atAGlance">At a glance</p>
       <div className="overview">
