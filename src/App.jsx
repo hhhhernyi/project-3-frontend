@@ -11,14 +11,22 @@ import IndividualClientInfo from "./pages/IndividualClientInfo";
 import NewProducts from "./pages/NewProduct";
 import EditClientPage from "./pages/EditClientPage";
 import AddNewProductsPage from "./pages/AddNewProductToClient";
+import ResponsiveAppBar from "./components/Navbar";
+// import { UserContext } from "./Contexts/UserContext";
+// import { useContext } from "react";
 // import EditProductPage from "./pages/EditProductPage";
 
 
 const App = () => {
+
+  // const { isLoggedIn } = useContext(UserContext)
+
   return (
     <>
-      <h3 className="welcomeText">Welcome to the insurance CRM portal!</h3>
       
+      
+      {/* {isLoggedIn && <ResponsiveAppBar />} */}
+        <ResponsiveAppBar/>
       <Routes>
         <Route path='/' element={<SignInPromptBox />} />
         <Route path='/home' element={<HomePage />} />
@@ -31,7 +39,7 @@ const App = () => {
         <Route path='/products/new' element={<NewProducts />} /> 
         {/* <Route path='/products/:productId/edit' element={<EditProductPage />}/> */}
         <Route path='/products/:productId' element={<IndividualProductInfo />}/>
-        <Route path='/product' element={<ProductList />} /> 
+        <Route path='/products' element={<ProductList />} /> 
         <Route path='/profile' element={<Profile />} /> 
       </Routes>
     </>

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Navbar from "../components/Navbar";
 import { UserContext } from "../Contexts/UserContext";
 import { Gauge } from "@mui/x-charts";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -10,7 +9,7 @@ const HomePage = () => {
   const { user } = useContext(UserContext);
   return (
     <div className="HomePage">
-      <Navbar />
+      
       <h1 className="welcomeText">Welcome {user.username}</h1>
       <p className="atAGlance">At a glance</p>
       <div className="overview">
