@@ -4,11 +4,14 @@ import SignUp from "./pages/SignUp";
 import HomePage from './pages/HomePage';
 import ClientList from './pages/ClientList'; 
 import ProductList from './pages/ProductList'; 
+import IndividualProductInfo from "./pages/IndividualProduct";
 import Profile from './pages/Profile'; 
 import ClientForm from "./components/ClientForm";
 import IndividualClientInfo from "./pages/IndividualClientInfo";
 import NewProducts from "./pages/NewProduct";
 import EditClientPage from "./pages/EditClientPage";
+// import EditProductPage from "./pages/EditProductPage";
+
 
 const App = () => {
   return (
@@ -24,6 +27,8 @@ const App = () => {
         <Route path='/clients/:clientId/edit' element={<EditClientPage />}/>
         <Route path='/clients/:clientId' element={<IndividualClientInfo />}/>
         <Route path='/products/new' element={<NewProducts />} /> 
+        {/* <Route path='/products/:productId/edit' element={<EditProductPage />}/> */}
+        <Route path='/products/:productId' element={<IndividualProductInfo />}/>
         <Route path='/product' element={<ProductList />} /> 
         <Route path='/profile' element={<Profile />} /> 
       </Routes>

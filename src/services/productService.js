@@ -43,8 +43,45 @@ async function showProduct(productId) {
     
 }
 
+async function deleteProduct(productId) {
+    try {
+        const res = await fetch(`${BASE_URL}/${productId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+             Authorization: `Bearer ${localStorage.getItem('token')}` 
+           
+          },
+        });
+    
+      return res.json()
+
+      } catch (err) {
+        console.error(err)
+        
+      }
+    };
+
+    async function updateProduct(productId, formData) {
+            try {
+                const res = await fetch(`${BASE_URL}/${productId}`, {
+                    method: 'PUT',
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                 },
+                 body: JSON.stringify(formData),
+                  });
+                  return  res.json();
+            } catch (err) {
+                console.log(err);
+            }
+    
+        }
+
 export {
     indexProduct,
     createProduct,
-    showProduct
+    showProduct,
+    deleteProduct,
+    updateProduct
   };
