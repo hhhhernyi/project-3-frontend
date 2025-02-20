@@ -60,6 +60,7 @@ button:focus-visible {
   margin: auto;
   width: 50%;
   text-align: center;
+  padding: 5px;
   border: solid black;
   border-radius: 5px;
 }
@@ -103,6 +104,29 @@ button:focus-visible {
 .priorityText{
   font-size: 0px;
 }
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.atAGlance {
+  
+}
+.overview {
+  display: flex;
+  flex-direction: column;
+}
+.gaugeComponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.calendarComponent {
+  width: 400px;
+
+}
 
 /* MEDIA QUERIES FOR BIG SCREENS */
 @media only screen and (min-width: 768px) {
@@ -114,6 +138,12 @@ button:focus-visible {
   }
   .priorityText{
     font-size: 0.8vw;;
+  }
+  .overview {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-around;
   }
 
 }
