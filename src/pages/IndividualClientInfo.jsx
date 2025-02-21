@@ -56,10 +56,14 @@ const IndividualClientInfo = () => {
         <div className="individualClientInfoPageDetails">
           <div>Name: {client.name}</div>
           <div>Contact Number: {client.handphoneNumber}</div>
+          <div>Annual Income: {client.annualIncome}</div>
           <div>Priority: {client.priority}</div>
           <div>Comments: <p className="individualClientComments">{client.comments}</p></div>
+          <div>DOB:<p className="dateOfBirth">{moment(client.dateOfBirth).format('DD-MM-YYYY')}</p></div>
+          <div>Occupation: {client.occupation}</div>
+          <div>Address: {client.address}</div>
           <div>Date Last Met:<p className="lastmet">{moment(client.lastmet).format('DD-MM-YYYY')}</p></div>
-          <div>Pipeline:</div>
+          <div>Existing Products: {client.existingPlans}</div>
           {clientProductsToSell.length === 0 ? <p>No Products Found</p> : null}
           {clientProductsToSell.map((product) => (
             <p key={product._id}>

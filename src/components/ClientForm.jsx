@@ -4,12 +4,12 @@
   // const [error, setError] = useState('');
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import ResponsiveAppBar from "./Navbar";
+// import ResponsiveAppBar from "./Navbar";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import AlertSuccess from "./AlertComponent/alertSuccess";
+import AlertSuccess from "./AlertComponent/AlertSuccess";
 import AlertFailure from "./AlertComponent/AlertFailure";
 import Button from '@mui/material/Button';
 
@@ -125,7 +125,7 @@ const ClientForm = () => {
 
   return (
     <div>
-      <ResponsiveAppBar />
+      {/* <ResponsiveAppBar />
       <h2>Create New Client</h2>
       {message && <p style={{ color: 'green' }}>{message}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -189,7 +189,7 @@ const ClientForm = () => {
         <div>
           <button onClick={() => navigate('/clients')}>Back to Client Page</button>
         </div>
-      </form>
+      </form> */}
       <div className="createClientAlerts">
         {showSuccessAlert ? (
           <AlertSuccess message={"Client Created Successfully"} />
