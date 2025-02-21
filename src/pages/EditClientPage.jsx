@@ -70,6 +70,11 @@ export default function EditClientPage () {
             </div>
 
             <div>
+                <label htmlFor="lastmet">Last Met Date:</label>
+                <TextField type="date" name='lastmet' id="lastmet" variant="outlined" value={formData.lastmet} onChange={handleChange}/>
+            </div>
+
+            <div>
                 <Button variant="outlined" type='submit' onClick={handleClick}>Confirm Changes</Button>
                 <Button variant="outlined" type='submit' onClick={handleClick}>Go back</Button>
 

@@ -2,34 +2,32 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import ResponsiveAppBar from './Navbar';
 
-
 const ClientForm = () => {
-  
   const [form, setForm] = useState({
     name: '',
     handphoneNumber: '',
-    priority: '',
+    priority: 'High', // Set a default value for priority
     comments: '',
-    // agent:'',
+    lastmet: '',
   });
 
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
-
   const [error, setError] = useState('');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prevForm) => ({
       ...prevForm,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.handphoneNumber) {
-      setError("Please fill in all required fields.");
-      return; // Don't proceed with the fetch request if validation fails
+      setError('Please fill in all required fields.');
+      return;
     }
     console.log(form);
 
@@ -38,30 +36,22 @@ const ClientForm = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        body: JSON.stringify(form), // Send the form state as the request body
+        body: JSON.stringify(form),
       });
 
       if (response.ok) {
         setMessage('Client added successfully');
-        // Optionally reset the form fields here
         setForm({
           name: '',
           handphoneNumber: '',
           priority: 'High',
           comments: '',
-        //   agent:'',
-
-        //   existingProducts: '',
-        //   productsToSell: ''
+          lastmet: '',
         });
-      } 
-   
-      
-      else {
+      } else {
         const data = await response.json();
-        console.log(data);
         setError(data.message || 'An error occurred while adding the client');
       }
     } catch (err) {
@@ -70,96 +60,75 @@ const ClientForm = () => {
     }
   };
 
-
   return (
     <div>
-      <ResponsiveAppBar/>
-        <h2>Create New Client</h2>
-        <form onSubmit={handleSubmit}>
-
+      <ResponsiveAppBar />
+      <h2>Create New Client</h2>
+      {message && <p style={{ color: 'green' }}>{message}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
         <div>
-        <label>Name:</label>
-        <input
-        type="text"
-        name="name"
-        value={form.name}
-        onChange={handleChange}
-        />
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+          />
         </div>
 
         <div>
-        <label>Handphone Number</label>
-        <input
-        type="text"
-        name="handphoneNumber"
-        value={form.handphoneNumber}
-        onChange={handleChange}
-        />
+          <label>Handphone Number:</label>
+          <input
+            type="text"
+            name="handphoneNumber"
+            value={form.handphoneNumber}
+            onChange={handleChange}
+          />
         </div>
 
         <div>
-  <label>Priority:</label>
-  <select
-    name="priority"
-    value={form.priority}
-    onChange={handleChange}
-  >
-    <option value="" disabled selected>Select Priority</option> {/* Blank option */}
-    <option value="High">High</option>
-    <option value="Medium">Medium</option>
-    <option value="Low">Low</option>
-  </select>
-</div>
+          <label>Priority:</label>
+          <select
+            name="priority"
+            value={form.priority}
+            onChange={handleChange}
+          >
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
 
         <div>
-        <label>Comments:</label>
-        <input
+          <label>Comments:</label>
+          <input
             type="text"
             name="comments"
             value={form.comments}
             onChange={handleChange}
-            />
+          />
         </div>
 
-        {/* <div>
-        <label>Agent ID:</label>
-        <input
-            type="text"
-            name="agent"
-            value={form.agent}
-            onChange={handleChange}
-            />
-        </div>  */}
-
-        {/* <div>
-        <label>Existing Products:</label>
-        <input
-            type="text"
-            name="existingProducts"
-            value={form.existingProducts}
-            onChange={handleChange}
-            />
-        </div> */}
-
-        {/* <div>
-         <label>Products to sell:</label>
-        <input
-            type="text"
-            name="productsToSell"
-            value={form.productsToSell}
-            onChange={handleChange}
-            />
-        </div> */}
         <div>
-        <button type="submit">Add Client</button>
+          <label>Last Met Date:</label>
+          <input
+            type="date"
+            name="lastmet"
+            value={form.lastmet}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <button type="submit">Add Client</button>
         </div>
         <div>
-        <button onClick={() => navigate('/clients')}>Back to Client Page</button>
+          <button onClick={() => navigate('/clients')}>Back to Client Page</button>
         </div>
-        </form>
-        </div>
-
-  )
+      </form>
+    </div>
+  );
 };
 
 export default ClientForm;

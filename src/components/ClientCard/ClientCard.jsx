@@ -5,6 +5,7 @@ export default function ClientCard(props) {
     <div>
         {props.name}
         <p className="priorityText">Priority: {props.priority}</p>
+        <p className="date">Date Last Met: {props.lastmet}</p>
     </div>
     </Card>;
 }

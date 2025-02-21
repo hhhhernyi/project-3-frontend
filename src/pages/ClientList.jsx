@@ -17,14 +17,23 @@ export default function ClientList() {
   useEffect(() => {
     async function getClients() {
       const clientData = await clientService.indexClient();
-      setClientList(clientData);
+
+      const sortedClientData = clientData.sort((a, b) => {
+            const priorityOrder = { High:3, Medium:2, Low:1};
+            return priorityOrder[b.priority] - priorityOrder[a.priority];
+
+      });
+
+      setClientList(sortedClientData);
     }
     getClients();
   }, []);
+
+  
   return (
     <div className="clientListPage">
       <ResponsiveAppBar />
-      <h2>Here is your list of clients</h2>
+      <h2>Client Listed by Urgency</h2>
       <div className="clientListPageButtons">
         <Button variant="outlined">
           <Link to="/home">Back to Home</Link>

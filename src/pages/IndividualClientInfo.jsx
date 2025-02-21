@@ -3,6 +3,8 @@ import Button from "@mui/material/Button";
 import { useParams, useNavigate } from "react-router";
 import * as clientService from "../services/clientsService";
 import ResponsiveAppBar from "../components/Navbar";
+import moment from 'moment';
+
 
 const IndividualClientInfo = () => {
   const navigate = useNavigate();
@@ -56,6 +58,7 @@ const IndividualClientInfo = () => {
           <div>Contact Number: {client.handphoneNumber}</div>
           <div>Priority: {client.priority}</div>
           <div>Comments: <p className="individualClientComments">{client.comments}</p></div>
+          <div>Date Last Met:<p className="lastmet">{moment(client.lastmet).format('DD-MM-YYYY')}</p></div>
           <div>Pipeline:</div>
           {clientProductsToSell.length === 0 ? <p>No Products Found</p> : null}
           {clientProductsToSell.map((product) => (
