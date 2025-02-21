@@ -38,6 +38,7 @@ export default function ClientList() {
         {clientList.map((item) => (
           <Link key={item._id} to={`/clients/${item._id}`}>
             <ClientCard
+            className="clientCard"
               name={item.name}
               priority={item.priority}
               style={priorityColors[`${item.priority}`]}

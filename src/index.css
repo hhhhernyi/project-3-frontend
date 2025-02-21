@@ -137,6 +137,9 @@ button:focus-visible {
   height: 55px;
   overflow: hidden;
 }
+.clientListCard:hover {
+  transform: scale(1.5);
+}
 .priorityText{
   font-size: 0px;
 }
@@ -159,7 +162,25 @@ button:focus-visible {
 }
 .calendarComponent {
   width: 400px;
-
+}
+.individualClientInfoPage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.individualClientCard {
+  border: solid blue;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  width: 70vw;
+  max-width: 400px;
+}
+.individualClientComments {
+  border: solid black 1px;
+  padding: 2px;
+  height: 100px;
+  overflow-y: scroll;
 }
 
 /* MEDIA QUERIES FOR BIG SCREENS */
