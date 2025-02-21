@@ -14,6 +14,7 @@ const ClientForm = () => {
   });
 
   const navigate = useNavigate();
+  const [message, setMessage] = useState('');
 
   const [error, setError] = useState('');
   const handleChange = (e) => {
@@ -43,7 +44,7 @@ const ClientForm = () => {
       });
 
       if (response.ok) {
-        alert('Client added successfully');
+        setMessage('Client added successfully');
         // Optionally reset the form fields here
         setForm({
           name: '',
