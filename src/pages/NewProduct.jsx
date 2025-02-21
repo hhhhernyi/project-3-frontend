@@ -19,7 +19,7 @@ export default function NewProducts() {
         console.log('new product: ', newProduct)
     } 
     function handleClick() {
-        navigate('/product')
+        navigate('/products')   
     }
     function handleChange(event) {
         setFormData({ ...formData, [event.target.name]: event.target.value });
