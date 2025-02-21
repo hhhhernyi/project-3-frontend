@@ -182,6 +182,68 @@ button:focus-visible {
   height: 100px;
   overflow-y: scroll;
 }
+.createClientForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+.oneRowOfInput {
+  margin: 5px 0;
+}
+.formDetails {
+  width: 85vw;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid black 2px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+.createClientLabel {
+  display: inline-block;
+  font-size: 3.2vw;
+  text-align: center;
+  width: 130px
+}
+.commentSection {
+  display: flex;
+}
+.commentsLabel {
+  height: 80px;
+  
+}
+.createClientCommentsInput {
+  height: 80px;
+  width: 210px
+}
+.createClientFormButtons {
+  display: flex;
+  width: 300px;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+.oneButton {
+  width: 120px;
+}
+.createClientInput {
+  width: 210px
+}
+.createClientExistingProduct {
+  width: 250px
+}
+.existingProductInput {
+  display: flex;
+  justify-content: center;
+}
+.priorityInput {
+  display: flex;
+  justify-content: center;
+}
+.priorityForm{
+  width: 280px
+}
 
 /* MEDIA QUERIES FOR BIG SCREENS */
 @media only screen and (min-width: 768px) {
@@ -199,6 +261,28 @@ button:focus-visible {
     flex-direction: row;
     width: 100vw;
     justify-content: space-around;
+  }
+  .formDetails {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid black 2px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  }
+  .createClientLabel {
+    font-size: 1vw;
+  }
+  .oneButton {
+    width: 120px;
+  }
+  .oneButtonDiv {
+    margin: 5px;
+  }
+  .oneRowOfInput {
+    margin: 2px 0;
   }
 
 }
