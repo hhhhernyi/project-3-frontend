@@ -63,6 +63,7 @@ const IndividualClientInfo = () => {
           <div>Occupation: {client.occupation}</div>
           <div>Address: {client.address}</div>
           <div className="lastmet">Date Last Met: {moment(client.lastmet).format('DD-MM-YYYY')}</div>
+          <div className="nextAppt">Next Appt: {moment(client.nextAppt).format('DD-MM-YYYY')}</div>
           <div>Existing Products: {client.existingPlans}</div>
           {clientProductsToSell.length === 0 ? <p>No Products Found</p> : null}
           {clientProductsToSell.map((product) => (
