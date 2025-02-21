@@ -5,7 +5,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import AlertSuccess from "./AlertComponent/alertSuccess";
+import AlertSuccess from "./AlertComponent/AlertSuccess";
 import AlertFailure from "./AlertComponent/AlertFailure";
 import Button from '@mui/material/Button';
 
