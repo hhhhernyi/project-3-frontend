@@ -64,6 +64,7 @@ const SignInPromptBox = () => {
         </div>
         <div className="passwordLogin">
           <TextField
+          type="password"
             id="passwordLogin"
             name="password"
             label="Password:"
