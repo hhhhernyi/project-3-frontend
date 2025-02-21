@@ -244,6 +244,9 @@ button:focus-visible {
 .priorityForm{
   width: 280px
 }
+.createClientFormExistingLabel {
+  font-size: small;
+}
 
 /* MEDIA QUERIES FOR BIG SCREENS */
 @media only screen and (min-width: 768px) {

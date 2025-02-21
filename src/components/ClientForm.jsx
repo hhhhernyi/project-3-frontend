@@ -1,10 +1,6 @@
-
-  // const navigate = useNavigate();
-  // const [message, setMessage] = useState('');
-  // const [error, setError] = useState('');
 import { useState } from "react";
 import { useNavigate } from "react-router";
-// import ResponsiveAppBar from "./Navbar";
+import ResponsiveAppBar from "./Navbar";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
@@ -20,6 +16,8 @@ const ClientForm = () => {
     priority: "",
     comments: "",
     dateOfBirth: "",
+    lastMet:"",
+    nextAppt:"",
     occupation: "",
     address: "",
     annualIncome:'',
@@ -51,9 +49,6 @@ const ClientForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!form.name || !form.handphoneNumber) {
-    //   setError('Please fill in all required fields.');
-    //   return;
     if (
       !form.name ||
       !form.handphoneNumber ||
@@ -77,8 +72,6 @@ const ClientForm = () => {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
-          // "Content-Type": "application/json",
-          // Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(form),
       });
@@ -97,22 +90,7 @@ const ClientForm = () => {
           comments: '',
           lastmet: '',
         });
-      } 
-      // else {
-      //   const data = await response.json();
-      //   setError(data.message || 'An error occurred while adding the client');
-      //   setMessage("Client added successfully");
-
-
-      //   // Optionally reset the form fields here
-      //   setForm({
-      //     name: "",
-      //     handphoneNumber: "",
-      //     priority: "High",
-      //     comments: "",
-      //     dateOfBirth: "",
-      //   });
-       else {
+      } else {
         const data = await response.json();
         console.log(data);
         setError(data.message || "An error occurred while adding the client");
@@ -125,71 +103,7 @@ const ClientForm = () => {
 
   return (
     <div>
-      {/* <ResponsiveAppBar />
-      <h2>Create New Client</h2>
-      {message && <p style={{ color: 'green' }}>{message}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Handphone Number:</label>
-          <input
-            type="text"
-            name="handphoneNumber"
-            value={form.handphoneNumber}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Priority:</label>
-          <select
-            name="priority"
-            value={form.priority}
-            onChange={handleChange}
-          >
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Comments:</label>
-          <input
-            type="text"
-            name="comments"
-            value={form.comments}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label>Last Met Date:</label>
-          <input
-            type="date"
-            name="lastmet"
-            value={form.lastmet}
-            onChange={handleChange}
-          />
-        </div>
-        
-        <div>
-          <button type="submit">Add Client</button>
-        </div>
-        <div>
-          <button onClick={() => navigate('/clients')}>Back to Client Page</button>
-        </div>
-      </form> */}
+      <ResponsiveAppBar />
       <div className="createClientAlerts">
         {showSuccessAlert ? (
           <AlertSuccess message={"Client Created Successfully"} />
@@ -202,6 +116,7 @@ const ClientForm = () => {
       <div className="createClientForm">
         <h2>Create New Client</h2>
         <form onSubmit={handleSubmit} className="formDetails">
+
           <div className="oneRowOfInput">
             <label className="createClientLabel">Name: </label>
             <input
@@ -279,6 +194,29 @@ const ClientForm = () => {
             />
           </div>
 
+          <div className="oneRowOfInput">
+            <label className="createClientLabel">Last Meeting:</label>
+            <input
+              type="date"
+              name="lastMet"
+              value={form.lastMet}
+              onChange={handleChange}
+              className="createClientInput"
+            />
+          </div>
+
+          <div className="oneRowOfInput">
+            <label className="createClientLabel">Next Appt: </label>
+            <input
+              type="date"
+              name="nextAppt"
+              value={form.nextAppt}
+              onChange={handleChange}
+              className="createClientInput"
+            />
+          </div>
+
+     
           <div className="oneRowOfInput existingProductInput">
             <fieldset
               type="text"
@@ -291,7 +229,7 @@ const ClientForm = () => {
 
               <div>
                 <input type="checkbox" id="life" name="life" value="Life" />
-                <label htmlFor="life">Life</label>
+                <label htmlFor="life" className="createClientFormExistingLabel">Life</label>
               </div>
 
               <div>
@@ -301,7 +239,7 @@ const ClientForm = () => {
                   name="accident"
                   value="Accident"
                 />
-                <label htmlFor="accident">Accident</label>
+                <label htmlFor="accident" className="createClientFormExistingLabel">Accident</label>
               </div>
 
               <div>
@@ -311,7 +249,7 @@ const ClientForm = () => {
                   name="investment"
                   value="Investment"
                 />
-                <label htmlFor="investment">Investment</label>
+                <label htmlFor="investment" className="createClientFormExistingLabel">Investment</label>
               </div>
 
               <div>
@@ -321,7 +259,7 @@ const ClientForm = () => {
                   name="Hospitalization"
                   value="Hospitalization"
                 />
-                <label htmlFor="Hospitalization">Hospitalization</label>
+                <label htmlFor="Hospitalization" className="createClientFormExistingLabel">Hospitalization</label>
               </div>
 
               <div>
@@ -331,7 +269,7 @@ const ClientForm = () => {
                   name="Endowment"
                   value="Endowment"
                 />
-                <label htmlFor="Endowment">Endowment</label>
+                <label htmlFor="Endowment" className="createClientFormExistingLabel">Endowment</label>
               </div>
             </fieldset>
           </div>
