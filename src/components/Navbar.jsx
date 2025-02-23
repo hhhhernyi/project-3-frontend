@@ -46,7 +46,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
     navigate('/')
-    localStorage.clear()
+    localStorage.removeItem("token")
   };
 
   return (

@@ -21,7 +21,7 @@ const HomePage = () => {
             height={100}
             value={45}
             valueMin={0}
-            valueMax={60}
+            valueMax={Number(localStorage.getItem("monthlyGoal"))}
             startAngle={-90}
             endAngle={90}
             text={({ value, valueMax }) => `$${value} / $${valueMax}`}

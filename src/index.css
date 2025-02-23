@@ -247,6 +247,11 @@ button:focus-visible {
 .createClientFormExistingLabel {
   font-size: small;
 }
+.profilePageInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* MEDIA QUERIES FOR BIG SCREENS */
 @media only screen and (min-width: 768px) {
