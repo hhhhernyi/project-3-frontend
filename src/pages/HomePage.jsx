@@ -1,17 +1,26 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../Contexts/UserContext";
 import { Gauge } from "@mui/x-charts";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import ResponsiveAppBar from "../components/Navbar";
+import * as userService from '../services/userService'
 
 const HomePage = () => {
   const { user } = useContext(UserContext);
+  const [userDetails, setUserDetails] = useState({})
+   useEffect(()=>{
+    async function getUser() {
+      const userData = await userService.showUser(user._id)
+      setUserDetails(userData)
+    }
+    getUser()
+  },[])
   return (
     <div className="HomePage">
       <ResponsiveAppBar />
-      <h1 className="welcomeText">Welcome {user.username}</h1>
+      <h1 className="welcomeText">Welcome {userDetails.fullName}</h1>
       <p className="atAGlance">At a glance</p>
       <div className="overview">
         <div className="gaugeComponent">
@@ -19,9 +28,9 @@ const HomePage = () => {
           <Gauge
             width={200}
             height={100}
-            value={45}
+            value={0}
             valueMin={0}
-            valueMax={Number(localStorage.getItem("monthlyGoal"))}
+            valueMax={userDetails.monthlyGoal}
             startAngle={-90}
             endAngle={90}
             text={({ value, valueMax }) => `$${value} / $${valueMax}`}
