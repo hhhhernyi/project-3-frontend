@@ -12,6 +12,8 @@ import NewProducts from "./pages/NewProduct";
 import EditClientPage from "./pages/EditClientPage";
 import AddNewProductsPage from "./pages/AddNewProductToClient";
 import SignInPage from "./pages/SignIn";
+import CategoryProductCard from "./pages/CategoryProductCard";
+import ProductCard from "./components/ProductCard";
 
 
 const App = () => {
@@ -27,8 +29,9 @@ const App = () => {
         <Route path='/clients/:clientId/edit' element={<EditClientPage />}/>
         <Route path='/clients/:clientId/product' element={<AddNewProductsPage />}/>
         <Route path='/products' element={<ProductList />} /> 
-        <Route path='/products/new' element={<NewProducts />} /> 
-        <Route path='/products/:productId' element={<IndividualProductInfo />}/>
+        <Route path='/products/category/:categoryId' element={<CategoryProductCard /> } /> 
+        {/* <Route path='/products/new' element={<NewProducts />} />  */}
+        {/* <Route path='/products/:productId' element={<IndividualProductInfo />}/> */}
         <Route path='/profile' element={<Profile />} /> 
       </Routes>
     </>

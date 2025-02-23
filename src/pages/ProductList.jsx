@@ -29,7 +29,7 @@ const ProductList = () => {
       <ResponsiveAppBar />
       <h2>Our List of Products</h2>
 
-      <div className="clientListPageButtons">
+      {/* <div className="clientListPageButtons">
         <Button variant="outlined" color="primary">
           <Link to="/home" style={{ textDecoration: 'none' }}>
             Back to Home
@@ -40,7 +40,7 @@ const ProductList = () => {
             Create a new Product
           </Link>
         </Button>
-      </div>
+      </div> */}
 
       {/* Wrap the content with a Container to add padding */}
       <Container maxWidth="lg" style={{ padding: '0 20px' }}>  {/* Adjust the padding as needed */}
@@ -65,13 +65,13 @@ const ProductList = () => {
                   <Typography variant="h6" component="div">
                     {item.name}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  {/* <Typography variant="body2" color="text.secondary">
                     <strong>Category:</strong> {item.category}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  </Typography> */}
+                  {/* <Typography variant="body2" color="text.secondary">
                     <strong>Company:</strong> {item.company}
-                  </Typography>
-                  <Link to={`/products/${item._id}`} style={{ textDecoration: 'none' }}>
+                  </Typography> */}
+                  <Link to={`/products/category/${item.category}`} style={{ textDecoration: 'none' }}>
                     <Button variant="contained" color="primary" size="small" style={{ marginTop: '10px' }}>
                       View Details
                     </Button>
