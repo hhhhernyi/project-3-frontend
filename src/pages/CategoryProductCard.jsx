@@ -10,6 +10,7 @@ import * as productService from '../services/productService';
 import ResponsiveAppBar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 import { useParams, Link } from 'react-router';
+import { Button } from '@mui/material';
 
 
 const CategoryProductCard = ({ category }) => {
@@ -35,11 +36,17 @@ const CategoryProductCard = ({ category }) => {
             <div>
                 {productList.length > 0 ? (
                     productList.map((product) => (
-                        <ProductCard key={product.id} product={product}  />
+                        <ProductCard key={product._id} product={product}  />
                     ))
                 ) : (
                     <p>No products found in this category.</p>
+                    
                 )}
+                <p>
+                        <Button variant="outlined">
+                         <Link to="/Products">Back to Product List</Link>
+                         </Button>
+                         </p>
             </div>
         </>
     );

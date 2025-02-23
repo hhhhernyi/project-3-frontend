@@ -74,7 +74,7 @@ export default function ProductCard( {product} ) {
             </CardContent>
             <CardActions>
               {product.link && (
-                <Button size="small" href={product.link}>
+                <Button size="small" href={product.link} target="blank" rel="noopener noreferrer">
                   Learn More
                 </Button>
               )}
