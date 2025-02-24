@@ -168,8 +168,14 @@ button:focus-visible {
   flex-direction: column;
   align-items: center;
 }
+.individualClientInfoPageButtons {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+}
 .individualClientCard {
-  border: solid blue;
+  border: solid black;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   border-radius: 5px;
   margin-top: 20px;
   padding: 20px;
@@ -178,6 +184,7 @@ button:focus-visible {
 }
 .individualClientComments {
   border: solid black 1px;
+  
   padding: 2px;
   height: 100px;
   overflow-y: scroll;
@@ -252,6 +259,18 @@ button:focus-visible {
   flex-direction: column;
   align-items: center;
 }
+.productNameParagraph {
+  font-size: small;
+  width: 200px;
+}
+.individualClientPipeline {
+  display: flex;
+}
+.pipelineInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* MEDIA QUERIES FOR BIG SCREENS */
 @media only screen and (min-width: 768px) {
@@ -291,6 +310,37 @@ button:focus-visible {
   }
   .oneRowOfInput {
     margin: 2px 0;
+  }
+  .individualClientCard {
+    border: solid black;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: 70vw;
+    max-width: 1300px;
+  }
+  .individualClientCardMiddle {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+  }
+  .individualClientCardLeft {
+    border: solid black 1px;
+    width: 45%;
+    font-size: medium;
+    padding: 5px;
+
+  }
+  .individualClientCardRight {
+    border: solid black 1px;
+    width: 45%;
+    font-size: 1vw;
+    padding: 5px;
+
+  }
+  strong {
+    font-size: small;
   }
 
 }
