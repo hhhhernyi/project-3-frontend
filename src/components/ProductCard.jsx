@@ -15,15 +15,15 @@ import { getProductsByCategory, indexProduct } from '../services/productService'
 import { useParams } from 'react-router';
 
 
-export default function ProductCard( {product} ) {
+export default function ProductCard( {product , index} ) {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const { category } = useParams();
 
-
+ 
   const images = [imageone, imagetwo, imagethree, imagefour, imagefive];
-  const index = (parseInt(product._id.slice(-1), 16) % images.length);
+ 
   const displayImage = images[index]
 
   const formatDate = (dateString) => {
@@ -36,7 +36,7 @@ export default function ProductCard( {product} ) {
           <Card key={product._id}>
             <CardMedia
               sx={{ height: 140 }}
-              image={displayImage}
+              image={images[index % images.length]}
               title={product.name}
             />
             <CardContent>

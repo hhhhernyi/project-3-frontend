@@ -31,9 +31,9 @@ const CategoryProductCard = () => {
                 </Typography>
                 {productList.length > 0 ? (
                     <Grid container spacing={3}>
-                        {productList.map((product) => (
+                        {productList.map((product, index) => (
                             <Grid item key={product._id} xs={12} sm={6} md={4}>
-                                <ProductCard product={product} />
+                                <ProductCard product={product} index={index} />
                             </Grid>
                         ))}
                     </Grid>
