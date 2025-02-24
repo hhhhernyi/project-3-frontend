@@ -12,7 +12,7 @@ const IndividualProductInfo = () => {
 
 
   function handleClick() {
-    navigate(`/product`);
+    navigate(`/products`);
   }
 
   useEffect(() => {

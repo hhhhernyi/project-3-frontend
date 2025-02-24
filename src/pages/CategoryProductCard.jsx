@@ -44,7 +44,7 @@ const CategoryProductCard = ({ category }) => {
                 )}
                 <p>
                         <Button variant="outlined">
-                         <Link to="/Products">Back to Product List</Link>
+                         <Link to="/Products/category">Back to Product List</Link>
                          </Button>
                          </p>
             </div>

@@ -44,7 +44,7 @@ const SignInPromptBox = () => {
 
   const navigate = useNavigate();
   function navigateToSignUp() {
-    console.log("test");
+    
     navigate("/sign-up");
   }
 

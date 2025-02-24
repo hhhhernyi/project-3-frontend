@@ -1,19 +1,15 @@
 import { Routes, Route } from "react-router";
-// import SignInPromptBox from "./components/SignInPromptBox/SignInPromptBox";
 import SignUp from "./pages/SignUp";
 import HomePage from "./pages/HomePage";
 import ClientList from "./pages/ClientList";
 import ProductList from "./pages/ProductList";
-// import IndividualProductInfo from "./pages/IndividualProduct";
 import Profile from "./pages/Profile";
 import ClientForm from "./components/ClientForm";
 import IndividualClientInfo from "./pages/IndividualClientInfo";
-// import NewProducts from "./pages/NewProduct";
 import EditClientPage from "./pages/EditClientPage";
 import AddNewProductsPage from "./pages/AddNewProductToClient";
 import SignInPage from "./pages/SignIn";
 import CategoryProductCard from "./pages/CategoryProductCard";
-// import ProductCard from "./components/ProductCard";
 import PageNotFound from "./pages/PageNotFound";
 import { useContext } from "react";
 import { UserContext } from "./Contexts/UserContext";
@@ -32,7 +28,7 @@ const App = () => {
           <Route path="/clients/:clientId" element={<IndividualClientInfo />} />
           <Route path="/clients/:clientId/edit" element={<EditClientPage />} />
           <Route path="/clients/:clientId/product" element={<AddNewProductsPage />} />
-          <Route path="/products" element={<ProductList />} />
+          <Route path="/products/category" element={<ProductList />} />
           <Route path='/products/category/:categoryId' element={<CategoryProductCard /> } /> 
           <Route path="/profile" element={<Profile />} />
         </Routes>

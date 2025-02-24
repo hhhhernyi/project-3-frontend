@@ -2,7 +2,7 @@ import Card from "@mui/material/Card";
 
 export default function ClientCard(props) {
   const existingPlans = props.existingPlans || [];
-  console.log("ExistingPlans:", existingPlans);
+ 
 
   return (
     <Card
