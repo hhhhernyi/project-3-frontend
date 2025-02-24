@@ -53,7 +53,7 @@ const IndividualClientInfo = () => {
         setClient(clientData);
         setClientExistingPlans(clientData.existingPlans)
         setClientProductsToSell(clientData.productsToSell);
-        console.log("client info: ", clientData);
+        
       } catch (error) {
         console.error("Failed to fetch client details:", error);
       }
