@@ -17,6 +17,7 @@
     "@mui/icons-material": "^6.4.4",
     "@mui/material": "^6.4.4",
     "@mui/x-charts": "^7.27.0",
+    "@mui/x-data-grid": "^7.27.0",
     "@mui/x-date-pickers": "^7.27.0",
     "dayjs": "^1.11.13",
     "moment": "^2.30.1",

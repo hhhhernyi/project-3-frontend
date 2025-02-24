@@ -18,33 +18,6 @@ export default function ProductCard( {product} ) {
   const { category } = useParams();
 
 
-  // useEffect(() => {
-  //   async function fetchProducts() {
-  //     try {
-  //       setLoading(true);
-  //       let productData;
-        
-  //       if (category) {
-  //         // Fetch products by category
-  //         productData = await getProductsByCategory(category);
-  //       } else {
-  //         // Fetch all products
-  //         productData = await indexProduct();
-  //       }
-        
-  //       console.log("product data", productData);
-  //       setProducts(productData);
-  //     } catch (error) {
-  //       console.error('Failed to fetch products:', error);
-  //       setError(error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  
-  //   fetchProducts();
-  // }, [category]);
-
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString();
   };
