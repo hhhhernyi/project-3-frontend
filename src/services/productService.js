@@ -91,11 +91,24 @@ async function deleteProduct(productId) {
             }
         }
 
+        async function getCategories() {
+            try {
+                const res = await fetch(`${BASE_URL}/categories`, {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+                });
+                return res.json();
+            } catch (error) {
+                console.error("Failed to fetch categories:", error);
+                throw error;
+            }
+        }
+
 export {
     indexProduct,
     createProduct,
     showProduct,
     deleteProduct,
     updateProduct,
-    getProductsByCategory
+    getProductsByCategory,
+    getCategories
   };

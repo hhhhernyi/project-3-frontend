@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
-import { useParams, useNavigate } from "react-router";
+import { useParams} from "react-router";
 import * as clientService from "../services/clientsService";
 import * as productService from "../services/productService";
 import ResponsiveAppBar from "../components/Navbar";
+import { Link } from "react-router";
 
 const AddNewProductsPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { clientId } = useParams();
   const [client, setClient] = useState({});
   const [productId, setProductId] = useState("");
   const [allProducts, setAllProducts] = useState([]);
   const [clientProductsToSell, setClientProductsToSell] = useState([]);
+
+
 
   async function handleAddToClient(productId) {
     //event.preventDefault()
@@ -77,8 +80,8 @@ const AddNewProductsPage = () => {
         <ol>
           <div>
             <form onSubmit={() => handleAddToClient(productId)}>
-              <select onChange={handleChange}>
-                <option disabled selected>
+              <select onChange={handleChange} value={productId}>
+                <option disabled value="">
                   Endowment
                 </option>
                 {allProducts
@@ -178,7 +181,7 @@ const AddNewProductsPage = () => {
           
         </ol>
         <Button variant="outlined" type="submit" onClick={handleClick}>
-          Go back
+          <Link to={`/clients/${clientId}`}>Go back</Link>
         </Button>
       </div>
     </>

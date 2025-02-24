@@ -1,4 +1,4 @@
-import imageone from '../assets/stockFamilyPhotos/imageone.jpg' ;
+// import imageone from '../assets/stockFamilyPhotos/imageone.jpg' ;
 // import imagetwo from '../assets/stockFamilyPhotos/imagetwo.jpg' ;
 // import imagethree from '../assets/stockFamilyPhotos/imagethree.jpg' ;
 // import imagefour from '../assets/stockFamilyPhotos/imagefour.jpg' ;
