@@ -4,6 +4,7 @@ import { UserContext } from "../Contexts/UserContext";
 import Button from '@mui/material/Button';
 import ResponsiveAppBar from '../components/Navbar';
 import * as clientService from '../services/clientsService'
+import * as userService from '../services/userService'
 
 const Profile = () => {
   const { user } = useContext(UserContext);
@@ -12,14 +13,16 @@ const Profile = () => {
     monthlyGoal:''
   })
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    localStorage.setItem('monthlyGoal', formData.monthlyGoal)
+    const updatedUser = await userService.updateUser(user._id, formData)
+    console.log('updatedUser: ', updatedUser)
     setFormData({monthlyGoal:''});
   }
 
   function handleChange(event){
     setFormData({ ...formData, [event.target.name]: event.target.value });
+    console.log(formData)
 }
 
   useEffect(()=>{
@@ -39,7 +42,7 @@ const Profile = () => {
         <form onSubmit={handleSubmit}>
           <label htmlFor='monthlyGoal'>Monthly Goal: </label>
           <input id='monthlyGoal' type='number' name='monthlyGoal' onChange={handleChange}></input>
-          <button type='submit' >Update</button>
+          <Link to='/home'><Button variant="outlined" type='submit' >Update</Button></Link>
         </form>
       </div>
       

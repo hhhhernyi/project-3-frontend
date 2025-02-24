@@ -10,7 +10,9 @@ export default function SignUp() {
     const [formData, setFormData] = useState({
         username:'',
         password:'',
-        passwordCfm:''
+        passwordCfm:'',
+        fullName: '',
+        monthlyGoal: '0'
     })
 
     async function handleSubmit(event) {
@@ -21,7 +23,8 @@ export default function SignUp() {
         setFormData({
             username:'',
             password:'',
-            passwordCfm:''
+            passwordCfm:'',
+            fullname: ''
         })
     }
     function handleClick() {
@@ -55,6 +58,10 @@ export default function SignUp() {
         <input className='signUpPageInput' id="passwordCfm" onChange={handleChange}placeholder='confirm your password' name='passwordCfm' ></input>
         </div>
 
+        <div className='signUpPasswordCfm'>
+        <label className='signUpFormLabel' htmlFor='fullName' >Full Name:</label>
+        <input className='signUpPageInput' id="fullName" onChange={handleChange}placeholder='Enter your full name' name='fullName' ></input>
+        </div>
        
         
         <Button className='signUpPageButton' variant="outlined" onClick={handleClick} type='submit' >Create Account!</Button>
