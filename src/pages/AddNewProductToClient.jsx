@@ -1,84 +1,188 @@
-import { useEffect, useState } from 'react';
-import Button from '@mui/material/Button';
-import { useParams, useNavigate } from 'react-router';
-import * as clientService from '../services/clientsService';
-import * as productService from '../services/productService'
-import ResponsiveAppBar from '../components/Navbar';
+import { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import { useParams, useNavigate } from "react-router";
+import * as clientService from "../services/clientsService";
+import * as productService from "../services/productService";
+import ResponsiveAppBar from "../components/Navbar";
 
+const AddNewProductsPage = () => {
+  const navigate = useNavigate();
+  const { clientId } = useParams();
+  const [client, setClient] = useState({});
+  const [productId, setProductId] = useState("");
+  const [allProducts, setAllProducts] = useState([]);
+  const [clientProductsToSell, setClientProductsToSell] = useState([]);
 
-const AddNewProductsPage = () =>{
+  async function handleAddToClient(productId) {
+    //event.preventDefault()
+    console.log("added this to client: ", productId);
+    const updatedClient = await clientService.assignProductToClient(
+      clientId,
+      productId
+    );
+    console.log("updatedClient: ", updatedClient);
+  }
+  function handleChange(event) {
+    setProductId(event.target.value);
+  }
 
-    const navigate = useNavigate()
-    const { clientId } = useParams();
-    const [client, setClient] = useState({});
-    const [allProducts, setAllProducts]= useState([])
-    const [clientProductsToSell, setClientProductsToSell] = useState([])
+  async function handleClick() {
+    const clientData = await clientService.showClient(clientId);
+    console.log(clientData);
+    setClient(clientData);
+  }
 
-    async function handleAddToClient(productId){
-        console.log('added this to client: ',productId)
-        const updatedClient = await clientService.assignProductToClient(clientId,productId)
-        console.log('updatedClient: ',updatedClient)
-        // fire off a service and send a request to backend
-        navigate(`/clients/${clientId}`)
+  useEffect(() => {
+    async function fetchClientDetails() {
+      try {
+        const clientData = await clientService.showClient(clientId);
+        const productData = await productService.indexProduct();
+        setClient(clientData);
+        setClientProductsToSell(clientData.productsToSell);
+        setAllProducts(productData);
+      } catch (error) {
+        console.error("Failed to fetch client details:", error);
+      }
     }
+    fetchClientDetails();
+  }, [clientId]);
 
-    function handleClick() {
-        navigate(`/clients`)
-    }
+  return (
+    <>
+      <ResponsiveAppBar />
+      <div>
+        <h3>Add a new product for {client.name}</h3>
+      </div>
+      <div>
+        Name: {client.name}
+        <br />
+        Contact Number: {client.handphoneNumber}
+        <br />
+        Priority: {client.priority}
+        <br />
+        Comments: {client.comments}
+        <br />
+        Pipeline:
+        {clientProductsToSell.length === 0 ? <p>No Products Found</p> : null}
+        <ol>
+          {clientProductsToSell.map((product) => (
+            <li key={product._id}>
+              <p>
+                {product.name}, {product.company}
+              </p>
+            </li>
+          ))}
+        </ol>
+        Available Products: (Please add one by one)
+        <ol>
+          <div>
+            <form onSubmit={() => handleAddToClient(productId)}>
+              <select onChange={handleChange}>
+                <option disabled selected>
+                  Endowment
+                </option>
+                {allProducts
+                  .filter((product) => product.category === "Endowment")
+                  .map((item) => (
+                    <option key={item._id} value={item._id}>
+                      {item.name}
+                    </option>
+                  ))}
+              </select>
+              <button type="submit" onClick={handleClick}>
+                add to client list
+              </button>
+            </form>
+          </div>
 
-    useEffect(() => {
-        async function fetchClientDetails() {
-            try {
-                const clientData = await clientService.showClient(clientId);
-                const productData = await productService.indexProduct()
-                setClient(clientData);
-                setClientProductsToSell(clientData.productsToSell)
-                setAllProducts(productData)
-                console.log('client info: ',clientData)
-            } catch (error){
-                console.error("Failed to fetch client details:", error);
-            }
-        } 
-        fetchClientDetails();
-    }, [clientId]);
+          <div>
+            <form onSubmit={() => handleAddToClient(productId)}>
+              <select onChange={handleChange}>
+                <option disabled selected>
+                  Investment
+                </option>
+                {allProducts
+                  .filter((product) => product.category === "Investment")
+                  .map((item) => (
+                    <option key={item._id} value={item._id}>
+                      {item.name}
+                    </option>
+                  ))}
+              </select>
+              <button type="submit" onClick={handleClick}>
+                add to client list
+              </button>
+            </form>
+          </div>
 
-    
+          <div>
+            <form onSubmit={() => handleAddToClient(productId)}>
+              <select onChange={handleChange}>
+                <option disabled selected>
+                  Life
+                </option>
+                {allProducts
+                  .filter((product) => product.category === "Life")
+                  .map((item) => (
+                    <option key={item._id} value={item._id}>
+                      {item.name}
+                    </option>
+                  ))}
+              </select>
+              <button type="submit" onClick={handleClick}>
+                add to client list
+              </button>
+            </form>
+          </div>
 
-    return (
-        <>
-        <ResponsiveAppBar/>
-        <div><h3>Add a new product for {client.name}</h3></div>
-        <div>
-            Name: {client.name}<br/>
-            Contact Number: {client.handphoneNumber}<br/>
-            Priority: {client.priority}<br/>
-            Comments: {client.comments}<br/>
-            Pipeline: 
-            {clientProductsToSell.length===0? <p>No Products Found</p>: null }
-            {clientProductsToSell.map((product)=>(
-                <p key={product._id}>{product.name}, {product.company}</p>
-            ))}
-            
-            Available Products:
-            <ol>
-                {allProducts.map((product)=>(
-                    <li key={product._id}>{product.name} <button onClick={()=>handleAddToClient(product._id)}>add to client list</button></li>
-                ))}
+          <div>
+            <form onSubmit={() => handleAddToClient(productId)}>
+              <select onChange={handleChange}>
+                <option disabled selected>
+                  Personal Accident
+                </option>
+                {allProducts
+                  .filter((product) => product.category === "Accident")
+                  .map((item) => (
+                    <option key={item._id} value={item._id}>
+                      {item.name}
+                    </option>
+                  ))}
+              </select>
+              <button type="submit" onClick={handleClick}>
+                add to client list
+              </button>
+            </form>
+          </div>
 
-            </ol>
-            <Button variant="outlined" type='submit' onClick={handleClick}>Go back</Button>
-            
-        </div>
-        </>
-        )
-}
+          <div>
+            <form onSubmit={() => handleAddToClient(productId)}>
+              <select onChange={handleChange}>
+                <option disabled selected>
+                  Hospitalization
+                </option>
+                {allProducts
+                  .filter((product) => product.category === "Hospitalization")
+                  .map((item) => (
+                    <option key={item._id} value={item._id}>
+                      {item.name}
+                    </option>
+                  ))}
+              </select>
+              <button type="submit" onClick={handleClick}>
+                add to client list
+              </button>
+            </form>
+          </div>
+
+          
+        </ol>
+        <Button variant="outlined" type="submit" onClick={handleClick}>
+          Go back
+        </Button>
+      </div>
+    </>
+  );
+};
 
 export default AddNewProductsPage;
-
-
-//button to go back
-// edit
-//delete 
-
-// front end service 
-// back end controller 
