@@ -64,7 +64,7 @@ const ClientForm = () => {
       }, 1000);
       return; // Don't proceed with the fetch request if validation fails
     }
-    console.log(form);
+    
 
     try {
       const response = await fetch("http://localhost:3000/clients", {
@@ -92,7 +92,7 @@ const ClientForm = () => {
         });
       } else {
         const data = await response.json();
-        console.log(data);
+        
         setError(data.message || "An error occurred while adding the client");
       }
     } catch (err) {

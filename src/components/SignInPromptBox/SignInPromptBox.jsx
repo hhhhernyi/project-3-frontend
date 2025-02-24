@@ -22,7 +22,7 @@ const SignInPromptBox = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("login details: ", inputDetails);
+      
       const signedInUser = await authService.signIn(inputDetails);
       setUser(signedInUser);
       navigate("/home");

@@ -16,13 +16,13 @@ const Profile = () => {
   async function handleSubmit(event) {
     event.preventDefault()
     const updatedUser = await userService.updateUser(user._id, formData)
-    console.log('updatedUser: ', updatedUser)
+    
     setFormData({monthlyGoal:''});
   }
 
   function handleChange(event){
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log(formData)
+    
 }
 
   useEffect(()=>{

@@ -9,7 +9,7 @@ import ResponsiveAppBar from "../components/Navbar";
 export default function EditClientPage () {
     const navigate = useNavigate()
     const {clientId} = useParams()
-    const [client, setClient] = useState({})
+    
     const [formData, setFormData] = useState({
         name: '',
         handphoneNumber: '',
@@ -22,13 +22,13 @@ export default function EditClientPage () {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        console.log('updated form data: ',formData);
+        
         const updatedClient = await clientService.updateClient(clientId, formData);
-        console.log('updated client: ', updatedClient);
+        
         
     }
     function handleChange(event){
-        console.log(event.target.value)
+        
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
     function handleClick() {
@@ -38,7 +38,7 @@ export default function EditClientPage () {
             async function fetchClientDetails() {
                 try {
                     const clientData = await clientService.showClient(clientId);
-                    setClient(clientData);
+                    
                     setFormData({
                         name: clientData.name ||'',
                         handphoneNumber: clientData.handphoneNumber || '',
@@ -48,7 +48,7 @@ export default function EditClientPage () {
                         nextAppt: clientData.nextAppt || ''
 
                     })
-                    console.log('client Data: ',clientData)
+                    
                 } catch (error){
                     console.error("Failed to fetch client details:", error);
                 }
