@@ -13,9 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router";
-import { Home } from "@mui/icons-material";
 
-// const pages = ['Home','Products', 'Clients', 'Profile'];
 const pages2 = [
   { name: "Home", link: "Home" },
   { name: "Products", link: "products/category" },
