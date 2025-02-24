@@ -48,13 +48,17 @@ The **Client and Product Management App** is a React-based web application desig
 
 - **Frontend**:
   - React (with React Router for navigation)
+  - MaterialUI
   - CSS for styling
 
 - **State Management**:
   - React's `useContext` for managing user authentication state.
 
 - **Backend**:
-  - (Optional: Add backend technologies if applicable)
+  - NodeJS
+  - ExpressJS
+  - Mongoose
+  - NoSQL MongoDB
 
 ---
 
