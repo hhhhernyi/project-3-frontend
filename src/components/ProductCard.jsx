@@ -7,6 +7,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import imageone from '../assets/stockFamilyPhotos/imageone.jpg';
+import imagetwo from '../assets/stockFamilyPhotos/imagetwo.jpg';
+import imagethree from '../assets/stockFamilyPhotos/imagethree.jpg';
+import imagefour from '../assets/stockFamilyPhotos/imagefour.jpg';
+import imagefive from '../assets/stockFamilyPhotos/imagefive.jpg'; 
 import { getProductsByCategory, indexProduct } from '../services/productService';
 import { useParams } from 'react-router';
 
@@ -18,6 +22,10 @@ export default function ProductCard( {product} ) {
   const { category } = useParams();
 
 
+  const images = [imageone, imagetwo, imagethree, imagefour, imagefive];
+  const index = (parseInt(product._id.slice(-1), 16) % images.length);
+  const displayImage = images[index]
+
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString();
   };
@@ -28,7 +36,7 @@ export default function ProductCard( {product} ) {
           <Card key={product._id}>
             <CardMedia
               sx={{ height: 140 }}
-              image={imageone}
+              image={displayImage}
               title={product.name}
             />
             <CardContent>

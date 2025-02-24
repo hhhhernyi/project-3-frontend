@@ -1,56 +1,56 @@
-// import imageone from '../assets/stockFamilyPhotos/imageone.jpg' ;
-// import imagetwo from '../assets/stockFamilyPhotos/imagetwo.jpg' ;
-// import imagethree from '../assets/stockFamilyPhotos/imagethree.jpg' ;
-// import imagefour from '../assets/stockFamilyPhotos/imagefour.jpg' ;
-// import imagefive from '../assets/stockFamilyPhotos/imagefive.jpg' ;
-// import imagesix from '../assets/stockFamilyPhotos/imagesix.jpg' ;
-// import imageseven from '../assets/stockFamilyPhotos/imageseven.jpg' ;
 import { useEffect, useState } from 'react';
 import * as productService from '../services/productService';
 import ResponsiveAppBar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
-import { useParams, Link } from 'react-router';
-import { Button } from '@mui/material';
+import { useParams, Link } from 'react-router-dom';
+import { Button, Container, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 
-
-const CategoryProductCard = ({ category }) => {
-
+const CategoryProductCard = () => {
     const [productList, setProductlist] = useState([]);
-
-      useEffect(() => {
-        async function ProductsbyCategory() {
-          const productData = await productService.getProductsByCategory(categoryId);
-          console.log(productData);
-        //   setProduct(productData);
-        setProductlist(productData);
-        }
-        ProductsbyCategory();
-      }, []);
-
-
     const { categoryId } = useParams();
+
+    useEffect(() => {
+        async function fetchProductsByCategory() {
+            try {
+                const productData = await productService.getProductsByCategory(categoryId);
+                setProductlist(productData);
+            } catch (error) {
+                console.error("Error fetching products by category:", error);
+            }
+        }
+        fetchProductsByCategory();
+    }, [categoryId]);
 
     return (
         <>
             <ResponsiveAppBar />
-            <div>
+            <Container sx={{ mt: 4 }}>
+                <Typography variant="h4" gutterBottom>
+                    Products in Category: {categoryId}
+                </Typography>
                 {productList.length > 0 ? (
-                    productList.map((product) => (
-                        <ProductCard key={product._id} product={product}  />
-                    ))
+                    <Grid container spacing={3}>
+                        {productList.map((product) => (
+                            <Grid item key={product._id} xs={12} sm={6} md={4}>
+                                <ProductCard product={product} />
+                            </Grid>
+                        ))}
+                    </Grid>
                 ) : (
-                    <p>No products found in this category.</p>
-                    
+                    <Typography variant="body1">No products found in this category.</Typography>
                 )}
-                <p>
-                        <Button variant="outlined">
-                         <Link to="/Products/category">Back to Product List</Link>
-                         </Button>
-                         </p>
-            </div>
+                <Button
+                    variant="outlined"
+                    component={Link}
+                    to="/products/category"
+                    sx={{ mt: 3 }}
+                >
+                    Back to Product List
+                </Button>
+            </Container>
         </>
     );
 };
-
 
 export default CategoryProductCard;
