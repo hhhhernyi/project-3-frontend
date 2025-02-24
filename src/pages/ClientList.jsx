@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import moment from "moment";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import EditIcon from '@mui/icons-material/Edit'; 
+import VisibilityIcon from '@mui/icons-material/Visibility'; 
 import { useNavigate } from "react-router";
 
 import * as clientService from "../services/clientsService";
@@ -80,7 +80,7 @@ const navigate = useNavigate();
     },
     {
       field: 'actions',
-      headerName: 'Actions',
+      headerName: '',
       width: 120,
       renderCell: (params) => (
         <IconButton
@@ -88,7 +88,7 @@ const navigate = useNavigate();
           onClick={() => handleEditClient(params.row.id)} 
           sx={{ color: "grey" }} 
         >
-          <EditIcon />
+          <VisibilityIcon />
         </IconButton>
       ),
     },
