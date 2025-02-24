@@ -4,7 +4,7 @@ export default function SignInPage() {
   return (
     <div className="signInPage">
       <img
-        src="../src/assets/logo.png"
+        src="/../src/assets/logo.png"
         alt="logo of website"
         className="logoImage"
       />
