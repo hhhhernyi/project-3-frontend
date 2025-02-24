@@ -7,7 +7,7 @@ import ResponsiveAppBar from "../components/Navbar";
 import { Link } from "react-router";
 
 const AddNewProductsPage = () => {
-  // const navigate = useNavigate();
+  
   const { clientId } = useParams();
   const [client, setClient] = useState({});
   const [productId, setProductId] = useState("");
@@ -17,13 +17,13 @@ const AddNewProductsPage = () => {
 
 
   async function handleAddToClient(productId) {
-    //event.preventDefault()
-    console.log("added this to client: ", productId);
+    
+    
     const updatedClient = await clientService.assignProductToClient(
       clientId,
       productId
     );
-    console.log("updatedClient: ", updatedClient);
+    
   }
   function handleChange(event) {
     setProductId(event.target.value);
@@ -31,7 +31,7 @@ const AddNewProductsPage = () => {
 
   async function handleClick() {
     const clientData = await clientService.showClient(clientId);
-    console.log(clientData);
+    
     setClient(clientData);
   }
 

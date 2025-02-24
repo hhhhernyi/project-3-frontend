@@ -17,9 +17,9 @@ export default function SignUp() {
 
     async function handleSubmit(event) {
     event.preventDefault()
-        console.log('user creation details: ',formData)
+        
         const newUser = await authService.signUp(formData)
-        console.log('new token: ',newUser)
+        
         setFormData({
             username:'',
             password:'',

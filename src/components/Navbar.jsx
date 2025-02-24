@@ -14,6 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router";
 
+
+
 const pages2 = [
   { name: "Home", link: "Home" },
   { name: "Products", link: "products/category" },
@@ -115,19 +117,19 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+           
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            CRM_Name
+            Insure Connect
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages2.map((page, index) => (

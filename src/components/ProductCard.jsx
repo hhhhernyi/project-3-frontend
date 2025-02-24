@@ -16,15 +16,11 @@ import { useParams } from 'react-router';
 
 
 export default function ProductCard( {product , index} ) {
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const { category } = useParams();
+  
 
  
   const images = [imageone, imagetwo, imagethree, imagefour, imagefive];
  
-  const displayImage = images[index]
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString();

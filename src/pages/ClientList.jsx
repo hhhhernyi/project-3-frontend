@@ -17,7 +17,7 @@ export default function ClientList() {
   useEffect(() => {
     async function getClients() {
       const clientData = await clientService.indexClient();
-      console.log('Raw client data:', clientData);
+      
 
       // Transform clientData into the format expected by DataGrid
       const rows = clientData.map((client) => ({
