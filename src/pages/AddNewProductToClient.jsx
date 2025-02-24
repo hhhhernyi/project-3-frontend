@@ -100,8 +100,8 @@ const AddNewProductsPage = () => {
 
           <div>
             <form onSubmit={() => handleAddToClient(productId)}>
-              <select onChange={handleChange}>
-                <option disabled selected>
+              <select onChange={handleChange} value={productId}>
+                <option disabled value="">
                   Investment
                 </option>
                 {allProducts
@@ -120,8 +120,8 @@ const AddNewProductsPage = () => {
 
           <div>
             <form onSubmit={() => handleAddToClient(productId)}>
-              <select onChange={handleChange}>
-                <option disabled selected>
+              <select onChange={handleChange} value={productId}>
+                <option disabled value="">
                   Life
                 </option>
                 {allProducts
@@ -140,8 +140,8 @@ const AddNewProductsPage = () => {
 
           <div>
             <form onSubmit={() => handleAddToClient(productId)}>
-              <select onChange={handleChange}>
-                <option disabled selected>
+              <select onChange={handleChange} value={productId}>
+                <option disabled value="">
                   Personal Accident
                 </option>
                 {allProducts
@@ -160,8 +160,8 @@ const AddNewProductsPage = () => {
 
           <div>
             <form onSubmit={() => handleAddToClient(productId)}>
-              <select onChange={handleChange}>
-                <option disabled selected>
+              <select onChange={handleChange} value={productId}>
+                <option disabled value="">
                   Hospitalization
                 </option>
                 {allProducts
