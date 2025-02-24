@@ -61,12 +61,12 @@ const navigate = useNavigate();
     {
       field: 'existingPlans',
       headerName: 'Existing Plans',
-      width: 200,
+      width: 250,
     },
     {
       field: 'contact',
       headerName: 'Contact',
-      width: 200,
+      width: 120,
     },
     {
       field: 'occupation',
@@ -76,7 +76,7 @@ const navigate = useNavigate();
     {
       field: 'address',
       headerName: 'Address',
-      width: 200,
+      width: 300,
     },
     {
       field: 'actions',
