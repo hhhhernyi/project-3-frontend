@@ -65,6 +65,7 @@ export default function SignUp() {
        
         
         <Button className='signUpPageButton' variant="outlined" onClick={handleClick} type='submit' >Create Account!</Button>
+        <Button className='signUpPageButton' variant="outlined" onClick={handleClick} >Back to Sign In</Button>
     </form>
     </div>
 
